@@ -34,3 +34,33 @@ function checkEvenOrOdd(n) {
   else return console.log(`Given number ${n} is Odd`);
 }
 checkEvenOrOdd(10);
+
+var findDuplicates = function (nums) {
+  /*   let map = {}
+
+    for (let i = 0; i < nums.length; i++) {
+        map[nums[i]] == undefined ? map[nums[i]] = 1 : map[nums[i]]++
+    }
+    let result= []
+    for(const [key,value] of Object.entries(map)){
+        if(value >1){
+            result.push(key)
+        }
+    }
+    return result */
+  let result = [];
+
+  for (let num of nums) {
+    let index = Math.abs(num) - 1;
+
+    if (nums[index] < 0) {
+      result.push(index + 1);
+    } else {
+      nums[index] = -nums[index];
+    }
+  }
+
+  return result;
+};
+
+console.log(findDuplicates([4, 6, 5, 7, 8, 2, 3, 1]));
